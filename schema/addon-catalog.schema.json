@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CallesnikovProduction/openksenax-addons/main/schema/addon-catalog.schema.json",
+  "title": "OpenKsenax stable add-on catalog",
+  "description": "Canonical registry wire-format for OpenKsenax 0.3 (@since 0.3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "channel",
+    "generatedAtEpochMillis",
+    "addons"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "channel": {
+      "const": "STABLE"
+    },
+    "generatedAtEpochMillis": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "addons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/addon"
+      }
+    }
+  },
+  "$defs": {
+    "httpsUrl": {
+      "type": "string",
+      "pattern": "^https://[^\\s#]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "stableIdentifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$"
+    },
+    "androidPackageName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+    },
+    "addon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "addonId",
+        "packageName",
+        "displayName",
+        "shortDescription",
+        "executionModel",
+        "release",
+        "compatibility",
+        "requiredHostCapabilities",
+        "presentation",
+        "security"
+      ],
+      "properties": {
+        "addonId": {
+          "$ref": "#/$defs/stableIdentifier"
+        },
+        "packageName": {
+          "$ref": "#/$defs/androidPackageName"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shortDescription": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fullDescription": {
+          "type": "string"
+        },
+        "executionModel": {
+          "const": "AUTONOMOUS_APPLICATION"
+        },
+        "release": {
+          "$ref": "#/$defs/release"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/compatibility"
+        },
+        "requiredHostCapabilities": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableIdentifier"
+          }
+        },
+        "presentation": {
+          "$ref": "#/$defs/presentation"
+        },
+        "security": {
+          "$ref": "#/$defs/security"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionCode",
+        "versionName",
+        "apkUrl",
+        "apkSha256"
+      ],
+      "properties": {
+        "versionCode": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "versionName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "apkUrl": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "apkSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "managementApiVersion",
+        "minimumHostApi",
+        "minimumAndroidSdk"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "managementApiVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimumHostApi": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimumAndroidSdk": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "iconUrl": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "repositoryUrl": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "official",
+        "signingCertificateSha256"
+      ],
+      "properties": {
+        "official": {
+          "type": "boolean"
+        },
+        "signingCertificateSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}
+

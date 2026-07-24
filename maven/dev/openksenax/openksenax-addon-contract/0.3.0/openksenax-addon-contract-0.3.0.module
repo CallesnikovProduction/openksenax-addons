@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.openksenax",
+    "module": "openksenax-addon-contract",
+    "version": "0.3.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.4.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "openksenax-addon-contract-0.3.0.aar",
+          "url": "openksenax-addon-contract-0.3.0.aar",
+          "size": 97565,
+          "sha512": "f8717be75ce26afd38114055535137b0c3af634ed2ec9023b8e609006936c94608311ea0551687a7d9ac822bc80b21d9acea8b366407c92fe5d68cfc02ef3496",
+          "sha256": "b077b077fed0ee4d8c43225d6901278f7401a48e90098d85197411ef8a8b0968",
+          "sha1": "409fb84d65f440b067e96f2b2d536abb84229e75",
+          "md5": "e3f7bba3fc9e579e6f4c82c06406540e"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "openksenax-addon-contract-0.3.0.aar",
+          "url": "openksenax-addon-contract-0.3.0.aar",
+          "size": 97565,
+          "sha512": "f8717be75ce26afd38114055535137b0c3af634ed2ec9023b8e609006936c94608311ea0551687a7d9ac822bc80b21d9acea8b366407c92fe5d68cfc02ef3496",
+          "sha256": "b077b077fed0ee4d8c43225d6901278f7401a48e90098d85197411ef8a8b0968",
+          "sha1": "409fb84d65f440b067e96f2b2d536abb84229e75",
+          "md5": "e3f7bba3fc9e579e6f4c82c06406540e"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "openksenax-addon-contract-0.3.0-sources.jar",
+          "url": "openksenax-addon-contract-0.3.0-sources.jar",
+          "size": 33227,
+          "sha512": "b2303ebe6234ace677123187df541ca00b110c1e0141e242dae8b4633e890b467edcfdb8f647e2d04c417426ddec40b8c01f34b339a7faf3a362cfa7bbd742bf",
+          "sha256": "f8a2308d0c4b6fe93564945425131d9ec55ca56f67715e7605a6c4f1dc10e517",
+          "sha1": "4b523533eac7fa2a38c35decc8853f0e062a2960",
+          "md5": "7163c5544ef32058addee3fbe8436e9b"
+        }
+      ]
+    }
+  ]
+}

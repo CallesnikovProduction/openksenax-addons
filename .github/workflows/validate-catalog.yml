@@ -1,0 +1,45 @@
+name: Validate add-on catalog
+
+on:
+  pull_request:
+    paths:
+      - "registry/**"
+      - "schema/**"
+      - "tools/validate_catalog.py"
+      - "tools/validate_maven.py"
+      - "maven/**"
+      - ".github/workflows/validate-catalog.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "registry/**"
+      - "schema/**"
+      - "tools/validate_catalog.py"
+      - "tools/validate_maven.py"
+      - "maven/**"
+      - ".github/workflows/validate-catalog.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate catalog contract
+        run: python tools/validate_catalog.py registry/stable.json
+
+      - name: Check JSON Schema syntax
+        run: python -m json.tool schema/addon-catalog.schema.json > /dev/null
+
+      - name: Validate contract Maven artifacts
+        run: python tools/validate_maven.py maven
